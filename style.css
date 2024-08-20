@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    height: 100vh;
+}
+
+
+#board {
+    display: grid;
+    aspect-ratio: 1/1;
+    height: 80vh;
+    grid: repeat(3, 1fr) / repeat(3, 1fr);
+    border: 2px solid black;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square:nth-child(1),
+.square:nth-child(2),
+.square:nth-child(3) {
+    border-bottom: 6px solid white; /* Only bottom border for the top row */
+}
+
+.square:nth-child(7),
+.square:nth-child(8),
+.square:nth-child(9) {
+    border-top: 6px solid white; /* Only top border for the bottom row */
+}
+
+.square:nth-child(1),
+.square:nth-child(4),
+.square:nth-child(7) {
+    border-right: 6px solid white; /* Only right border for the left column */
+}
+
+.square:nth-child(3),
+.square:nth-child(6),
+.square:nth-child(9) {
+    border-left: 6px solid white; /* Only left border for the right column */
+}
