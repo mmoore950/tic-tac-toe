@@ -35,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 11em;
+    font-size: 14vh;
 }
 
 .square:nth-child(1),
@@ -66,8 +66,8 @@ input {
     background-color: black;
     color: rgb(255, 255, 255);
     border: none;
-    width: 8em;
-    font-size: 2em;
+    width: 8vw;
+    font-size: 3vh;
     text-align: center;
     padding: 0;
     margin: 0;
@@ -126,7 +126,7 @@ button {
     background-color: black;
     color: white;
     border: 2px solid white;
-    font-size: 2em;
+    font-size: 2.3vh;
     margin-top: 1em;
     padding: 8px;
     box-shadow: 0 0 5px 5px white
