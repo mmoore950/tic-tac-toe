@@ -25,16 +25,7 @@ const Board = (function() {
             boardArray[index] = currMarker
             square.textContent = currMarker
             turn++
-            Game.checkWin(boardArray)
-        }
-        if (turn == 9) {
-            const squareList = document.querySelectorAll('.square')
-            squareList.forEach(square => square.classList.add('flicker'))
-            const tieScore = document.querySelector('.tie')
-            let scoreNum = parseInt(tieScore.textContent)
-            scoreNum++
-            tieScore.textContent = `${scoreNum}`
-            setTimeout(() => Board.renderBoard(), 1500)
+            Game.checkWin(turn, boardArray)
         }
     }
 
@@ -43,23 +34,33 @@ const Board = (function() {
 
 const Game = (function() {
 
-    function checkWin(boardArray) {
-        const winConditions = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-        ]
-        winConditions.forEach((triple) => {
-            const [a, b, c] = triple
-            if (boardArray[a] == boardArray[b] && boardArray[a] == boardArray[c] && boardArray[a]) {
-                gameOver(triple)
-            }
-        })
+    function checkWin(turn, boardArray) {
+        if (turn == 9) {
+            const squareList = document.querySelectorAll('.square')
+            squareList.forEach(square => square.classList.add('flicker'))
+            const tieScore = document.querySelector('.tie')
+            let scoreNum = parseInt(tieScore.textContent)
+            scoreNum++
+            tieScore.textContent = `${scoreNum}`
+            setTimeout(() => Board.renderBoard(), 1500)
+        } else {
+            const winConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+            ]
+            winConditions.forEach((triple) => {
+                const [a, b, c] = triple
+                if (boardArray[a] == boardArray[b] && boardArray[a] == boardArray[c] && boardArray[a]) {
+                    gameOver(triple)
+                }
+            })
+        }
     }
 
     function gameOver(indices) {
