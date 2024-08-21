@@ -35,6 +35,24 @@ const Board = (function() {
 const Game = (function() {
 
     function checkWin(turn, boardArray) {
+        
+        const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+        ]
+        for (let i = 0; i < winConditions.length; i++) {
+            const [a, b, c] = winConditions[i]
+            if (boardArray[a] && boardArray[a] === boardArray[b] && boardArray[a] === boardArray[c]) {
+                gameOver(winConditions[i])
+                return
+            }
+        }
         if (turn == 9) {
             const squareList = document.querySelectorAll('.square')
             squareList.forEach(square => square.classList.add('flicker'))
@@ -43,25 +61,9 @@ const Game = (function() {
             scoreNum++
             tieScore.textContent = `${scoreNum}`
             setTimeout(() => Board.renderBoard(), 1500)
-        } else {
-            const winConditions = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-            ]
-            winConditions.forEach((triple) => {
-                const [a, b, c] = triple
-                if (boardArray[a] == boardArray[b] && boardArray[a] == boardArray[c] && boardArray[a]) {
-                    gameOver(triple)
-                }
-            })
         }
     }
+    
 
     function gameOver(indices) {
         const marker = document.querySelectorAll('.square')[indices[0]].textContent
@@ -84,11 +86,13 @@ const Game = (function() {
     return {checkWin}
 })();
 
-function createPlayer() {
-    return 
-}
-
-
-
+const reset = document.querySelector('button')
+reset.addEventListener('click', () => {
+    Board.renderBoard()
+    const scores = document.querySelectorAll('.score')
+    scores.forEach(score => {
+        score.textContent = '0'
+    })
+})
 Board.renderBoard()
 
