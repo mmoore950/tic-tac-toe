@@ -35,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 14vh;
+    font-size: min(14vh, 14vw);
 }
 
 .square:nth-child(1),
@@ -62,12 +62,12 @@ body {
     border-left: 6px solid white; /* Only left border for the right column */
 }
 
-input {
+input, #tie {
     background-color: black;
     color: rgb(255, 255, 255);
     border: none;
-    width: 8vw;
-    font-size: 3vh;
+    width: max(8vw, 8vh);
+    font-size: min(3vh, 3vw);
     text-align: center;
     padding: 0;
     margin: 0;
