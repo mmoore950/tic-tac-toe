@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,7 +25,7 @@ body {
 #board {
     display: grid;
     aspect-ratio: 1/1;
-    height: 80vh;
+    height: 60vh;
     grid: repeat(3, 1fr) / repeat(3, 1fr);
     border: 2px solid black;
 }
@@ -48,4 +60,77 @@ body {
 .square:nth-child(6),
 .square:nth-child(9) {
     border-left: 6px solid white; /* Only left border for the right column */
+}
+
+input {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border: none;
+    width: 8em;
+    font-size: 2em;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+input::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 20vh;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: white
+}
+
+.name-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vh;
+}
+
+h1#x, h1#o {
+    text-align: center;
+    width: 20vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.score {
+    margin: 10px;
+    font-size: 3em;
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.flicker {
+    animation: flicker 0.5s ease-in-out 3; 
 }

@@ -25,16 +25,25 @@ const Board = (function() {
             boardArray[index] = currMarker
             square.textContent = currMarker
             turn++
-            Game.checkWin()
+            Game.checkWin(boardArray)
+        }
+        if (turn == 9) {
+            const squareList = document.querySelectorAll('.square')
+            squareList.forEach(square => square.classList.add('flicker'))
+            const tieScore = document.querySelector('.tie')
+            let scoreNum = parseInt(tieScore.textContent)
+            scoreNum++
+            tieScore.textContent = `${scoreNum}`
+            setTimeout(() => Board.renderBoard(), 1500)
         }
     }
 
-    return {move, renderBoard}
+    return {boardArray, move, renderBoard}
 })()
 
 const Game = (function() {
 
-    function checkWin() {
+    function checkWin(boardArray) {
         const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -48,15 +57,30 @@ const Game = (function() {
         winConditions.forEach((triple) => {
             const [a, b, c] = triple
             if (boardArray[a] == boardArray[b] && boardArray[a] == boardArray[c] && boardArray[a]) {
-                gameOver(boardArray[a])
-                renderBoard()
+                gameOver(triple)
             }
         })
     }
 
-    function gameOver(marker) {
-
+    function gameOver(indices) {
+        const marker = document.querySelectorAll('.square')[indices[0]].textContent
+        indices.forEach(index => {
+            const square = document.querySelectorAll(".square")[index]
+            square.classList.add('flicker')
+        })
+        let playerScore;
+        if (marker == 'x') {
+            playerScore = document.querySelector('.player1')
+        } else {
+            playerScore = document.querySelector('.player2')
+        }
+        let scoreNum = parseInt(playerScore.textContent)
+        scoreNum++
+        playerScore.textContent = `${scoreNum}`
+        setTimeout(() => Board.renderBoard(), 1500)
     }
+
+    return {checkWin}
 })();
 
 function createPlayer() {

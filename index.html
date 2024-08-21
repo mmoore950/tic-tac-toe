@@ -8,8 +8,34 @@
 </head>
 <body>
     <div id="board">
-        
+        <!-- squares added via script.js -->
     </div>
+    <!-- Game Information -->
+     <div class="label-container">
+        <h1 id="x">x</h1>
+        <h1 id="o">o</h1>
+     </div>
+    <div class="game-info">
+        <div class="info">
+            <div class="name-container">
+                <!-- <label for="player1">x</label> -->
+                <input type="text" id="player1" placeholder="Player 1">
+            </div>
+            <h1 class="player1 score">0</h1>
+        </div>
+        <div class="info">
+            <h1 id="tie">Tie</h1>
+            <h1 class="tie score">0</h1>
+        </div>
+        <div class="info">
+            <div class="name-container">
+                <!-- <label for="player2">o</label> -->
+                <input type="text" id="player2" placeholder="Player 2">
+            </div>
+            <h1 class="score player2">0</h1>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
